@@ -38,10 +38,13 @@ class TestBooksCollector:
 
         assert collector.get_book_genre('Лолита') == ''
 
-    def test_get_book_genre_when_empty(self):
+    def test_set_book_genre_incorrect_genre(self):
         collector = BooksCollector()
+        collector.add_new_book('Гордость и предубеждение')
+        collector.set_book_genre('Гордость и предубеждение', 'Неизвестный жанр')
+        
+        assert collector.get_book_genre('Гордость и предубеждение') == ''
 
-        assert collector.get_book_genre() == {}
 
     def test_get_books_with_specific_genre_comedy(self):
         collector = BooksCollector()
@@ -57,7 +60,7 @@ class TestBooksCollector:
         collector.add_new_book('Оно')
         collector.set_book_genre('Оно', 'Ужасы')
         
-        assert collector.get_books_for_children() == ['Гордость и предубеждение']
+        assert collector.get_books_for_children() == ['Незнайка на луне']
 
     def test_add_book_in_favorites_success(self):
         collector = BooksCollector()
