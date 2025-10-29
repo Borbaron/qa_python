@@ -24,6 +24,13 @@ class TestBooksCollector:
     # напиши свои тесты ниже
     # чтобы тесты были независимыми в каждом из них создавай отдельный экземпляр класса BooksCollector()
 
+    def test_get_book_genre_returns_correct(self):
+        collector = BooksCollector()
+        collector.add_new_book('Преступление и наказание')
+        collector.set_book_genre('Преступление и наказание', 'Роман')
+
+        assert 'Преступление и наказание' in collector.books_genre
+
     def test_set_new_genre_fantastic(self):
         collector = BooksCollector()
         collector.add_new_book('Ведьмак')
