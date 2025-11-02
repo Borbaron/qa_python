@@ -24,12 +24,19 @@ class TestBooksCollector:
     # напиши свои тесты ниже
     # чтобы тесты были независимыми в каждом из них создавай отдельный экземпляр класса BooksCollector()
 
-    def test_get_book_genre_returns_correct(self):
+    def test_get_book_genre_returns_dictionary(self):
         collector = BooksCollector()
-        collector.add_new_book('Преступление и наказание')
-        collector.set_book_genre('Преступление и наказание', 'Роман')
+        genre_dict = collector.get_books_genre()
 
-        assert 'Преступление и наказание' in collector.books_genre
+        assert isinstance(genre_dict, dict)
+
+    def test_get_books_genre_empty_dictionary(self):
+        collector = BooksCollector()
+        genre_dict = collector.get_books_genre()
+
+        assert genre_dict == {}
+
+#добавил две проверки для get_books_genre
 
     def test_set_new_genre_fantastic(self):
         collector = BooksCollector()
