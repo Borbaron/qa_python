@@ -24,7 +24,7 @@ class TestBooksCollector:
     # напиши свои тесты ниже
     # чтобы тесты были независимыми в каждом из них создавай отдельный экземпляр класса BooksCollector()
 
-    def test_get_book_genre_returns_dictionary(self):
+    def test_get_books_genre_returns_dictionary(self):
         collector = BooksCollector()
         genre_dict = collector.get_books_genre()
 
@@ -37,6 +37,26 @@ class TestBooksCollector:
         assert genre_dict == {}
 
 #добавил две проверки для get_books_genre
+
+    def test_get_book_genre_existing_book(self):
+        collector = BooksCollector()
+        collector.add_new_book('Гордость и предубеждение')
+        collector.set_book_genre('Гордость и предубеждение', 'Комедии')
+
+        assert collector.books_genre['Гордость и предубеждение'] == collector.get_book_genre('Гордость и предубеждение')
+
+    def test_get_books_genre_correct(self):
+        collector = BooksCollector()
+        collector.add_new_book('Гордость и предубеждение')
+        collector.set_book_genre('Гордость и предубеждение', 'Комедии')
+        collector.add_new_book('Темная башня')
+        collector.set_book_genre('Темная башня', 'Фантастика')
+        books_genre = collector.get_books_genre()
+
+        assert collector.books_genre == books_genre
+
+# Я уже совсем запутался, будто в луп попал) Если и в этот раз не правильно, то дай, пожалуйста, прямой ответ
+# что не так, что исправить, как сделать
 
     def test_set_new_genre_fantastic(self):
         collector = BooksCollector()
